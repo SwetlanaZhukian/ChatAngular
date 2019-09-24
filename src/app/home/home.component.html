@@ -1,0 +1,31 @@
+  <nav class="navbar navbar-dark"style="background-color:#0a0a0a ;">
+  <a  class="navbar-brand nav-link" class="font-familychat" href="/home" >Chat</a>
+  <!-- <ul class="navbar-nav mr-auto ">
+  <a  class="nav-link" href="/home/profile">Profile</a>
+</ul> -->
+<ul class="navbar-nav mx-auto ">
+  <form class="form-inline my-2 my-lg-0 ">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchQuery" [(ngModel)]="searchQuery" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="onSubmit(searchQuery)" type="submit">Search</button>
+  </form>
+</ul>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+
+ <div class="row">
+  <div class="column_1 left">
+    <div class="widget">
+      <h3>Menu</h3>
+      <ul>
+        <li><a [routerLink]="['/home/profile']">Profile</a> </li>
+        <li><a [routerLink]="['/home/dialogs']">Messages</a></li>
+        <li><a [routerLink]="['/home/contact']">Contacts</a></li>
+        <li><a [routerLink]="['/home/blacklist']">Black List</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="column_1 right ">
+    <router-outlet></router-outlet> 
+  </div>
+</div> 
+

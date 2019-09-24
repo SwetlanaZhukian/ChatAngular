@@ -1,0 +1,231 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #eedae6;
+}
+
+input.form-control,input.form-control:focus{
+    background-color: #636b7b;
+    color: #fff;
+    border: 1px solid #636b7b;
+
+}
+
+input.form-control:focus{
+    box-shadow: none;
+}
+
+button[type=submit].btn{
+    border-radius: 20px;
+    background-color: #04c582;
+    color: #fff;
+}
+/* button[type=cancel].btn{
+  border-radius: 20px;
+  background-color: #c50404;
+  color: #fff;
+} */
+.cancel{
+  border-radius: 20px;
+  background-color: #c50404;
+  color: #fff;
+}
+
+div.form-group label:not(.text-danger){
+    color: #545d6a;
+    font-weight: 700;
+}
+
+div.form-group.required>label:first-child:after{
+    content:'*';
+    color: #fff;
+    padding-left: 5px;
+}
+
+#toast-container > div {
+    opacity:1;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .wrapped-div {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #2e3137;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  }
+
+  /* Tabs */
+.tab-header{
+    text-align: center;
+}
+
+  .tab-header h2.active {
+    color: #fff;
+    border-bottom: 4px solid #fff;
+  }
+
+  .tab-header h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    display:inline-block;
+    padding: 30px 40px 10px 40px;
+    cursor: pointer;
+    color: #545d6a;
+    border-bottom: 2px solid #545d6a;
+  }
+
+  .tab-header h2:focus {
+      outline: none;
+  }
+
+  form{
+      margin: 0px 16px;
+  }
+
+ div.form-group input.invalid{
+    border: 1px solid #dc3545; 
+ }
+ div.form-group label:first-child{
+    text-transform: uppercase;
+    font-size: 0.9rem;
+ }
+ .css-adaptive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    }
+    .cont {
+        display: grid;
+        grid-template-columns: repeat(3, 300px);
+        grid-row-gap: 30px;
+        grid-column-gap: 40px;
+        width: 85%;
+        margin: 0 auto;
+        list-style: none;
+        align-content:center;
+      }
+      
+      .cont>.item {
+        padding: 20px;
+        background-color: rgb(13, 14, 13);
+        align-content:center;
+        word-wrap:break-word;
+      }
+      img {
+        object-fit: cover;
+        border-radius:50%;
+        width: 100px;
+        height: 100px;
+       align-self: center
+      }
+      .cont{
+        padding-top: 50px;
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .result{
+        margin-bottom: 50px;
+      }
+
+      
+     *{box-sizing: border-box; margin: 0;} 
+.widget {
+  padding: 20px;
+  border: 5px solid #0a0a0a;
+  background:#0a0a0a;
+  border-radius: 0px;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  position:absolute;
+}
+.widget h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+  color:  #e9f0f0;
+}
+.widget ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 250px;
+}
+.widget li {
+  border-bottom: 1px solid #f5f2f2;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.widget li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.widget a {
+  text-decoration: none;
+  color:  #f9feff;
+  display: inline-block;
+}
+.widget li:before {
+  font-family: FontAwesome;
+  font-size: 20px;
+  vertical-align:bottom;
+  color: #dd3333; 
+  margin-right: 14px;
+}
+.widget li:nth-child(1):before {content:"\f007";}
+.widget li:nth-child(2):before {content:"\f27a";}
+.widget li:nth-child(3):before {content:"\f0c0";}
+.widget li:nth-child(4):before {content:"\f235";}
+* {
+  box-sizing: border-box;
+}
+.column_1 {
+  float: left;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;}
+  .font-familychat{
+    font-size: large;
+    font-style: oblique;
+    font-family:Luminari, fantasy;
+    font-weight: 500;
+    color: #dd3333;
+    font-stretch: ultra-expanded;
+  }
+
+  .a {
+    color:#ff0000
+    }
+    .a:hover {
+    color:#ff0000
+    }
+    .a:active {
+      color:#ff0000
+      }

@@ -1,0 +1,22 @@
+<div class="result">
+    <div class="cont-black" >
+   <div *ngFor="let user of usersInBlock" class="item" >
+    <ul class="list-group"> 
+       <div class="row ">
+              <div class="col-sm-4">
+      <img [src]="ImgPath(user.avatar)" />
+       </div>
+              <div class="col sm-4">
+          <h6 style="color:rgb(250, 250, 250)"><i class="fa fa-id-badge"></i> Name: <a  style="color: red"[routerLink]="['/home/contactprofile',user.userId]">{{user.name}}</a></h6>
+          <h6 style="color:rgb(250, 250, 250)"><i class="fa fa-phone"></i> Phone: {{user.phoneNumber}}</h6>
+          <h6 style="color:rgb(250, 250, 250)"><i class="fa fa-envelope-o"></i> Email: {{user.email}}</h6>
+           </div>  
+            <div class="col-sm-4 buttons">
+        <button (click)="DeleteFromBlackList(user.userId)" class="btn btn-light btn-lg"><i class="fa fa-unlock"></i></button>  
+      </div>
+    </div>  
+  </ul>
+  </div>
+  </div>
+  </div> 
+  

@@ -1,0 +1,39 @@
+.cont-black {
+    display: inline-grid;
+    grid-template-rows: 200;
+    grid-row-gap: 20px;
+ grid-column-gap: 40px; 
+    width: 85%;
+    margin: 0 auto;
+    list-style: none;
+    align-content:center;
+  }
+  
+  .cont-black>.item {
+    padding: 20px;
+    background-color:black;
+    align-content:center;
+    word-wrap:break-word;
+    word-break: break-all;
+  }
+  img {
+    object-fit: cover;
+    border-radius:50%;
+    border: 1px solid rgb(3, 3, 3);
+    width: 100px;
+    height: 100px;
+   align-self: center
+  }
+  .cont-black{
+    padding-top: 50px;
+    padding-left: 0;
+    text-align: center;
+}
+
+.result{
+    margin-bottom: 50px;
+  } 
+  .buttons{
+    margin-top: 30px;
+  }
+   

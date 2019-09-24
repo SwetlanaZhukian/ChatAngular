@@ -1,0 +1,34 @@
+
+   <div class="result">
+  <div class="cont-contact" >
+ <div *ngFor="let contact of contacts" class="item" >
+  <ul class="list-group"> 
+     <div class="row">
+            <div class="col-sm-4">
+    <img [src]="ImgPath(contact.avatar)" />
+     </div>
+            <div class="col sm-4">
+        <h6 style="color:rgb(5, 5, 5)"><i class="fa fa-id-badge"></i> Name: <a  style="color: red"[routerLink]="['/home/contactprofile',contact.userId]">{{contact.name}}</a></h6>
+        <h6 style="color:rgb(5, 5, 5)"><i class="fa fa-phone"></i> Phone: {{contact.phoneNumber}}</h6>
+        <h6 style="color:rgb(5, 5, 5)"><i class="fa fa-envelope-o"></i> Email: {{contact.email}}</h6>
+            </div>
+          <div class="col-sm-4">
+              <div class="row buttons " >
+                  <div class="col-sm-2">
+                      <button (click)="Delete(contact.userId)" class="btn btn-danger"  ><i class="fa fa-close"></i></button> 
+                  </div> 
+                  <div class="col-sm-2">
+                          <button [routerLink]="['/home/dialog',contact.userId]" class="btn btn-warning" ><i class=" fa fa-comments-o"></i></button>   
+                        </div> 
+                  <div class="col-sm-2">
+                    <button (click)="AddInBlock(contact.userId)" class="btn btn-secondary" *ngIf=!contact.status ><i class="fa fa-lock"></i></button> 
+                    <button (click)="DeleteFromBlock(contact.userId)" class="btn btn-light" *ngIf=contact.status ><i class="fa fa-unlock"></i></button>     
+                  </div>   
+              </div>     
+       
+    </div>
+  </div>   
+</ul>
+</div>
+</div>
+</div> 

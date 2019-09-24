@@ -1,0 +1,21 @@
+<div class="result">
+  <div class="cont-contact" >
+ <div *ngFor="let dialog of  dialogs" class="item" [routerLink]="['/home/dialog',dialog.contactId]" >
+  <ul class="list-group"> 
+     <div class="row">
+            <div class="col-sm-4">
+    <img [src]="ImgPath(dialog.avatar)" />
+     </div>
+       <div class="col sm-4 " >
+       <h6 ><a class="name" [routerLink]="['/home/contactprofile',dialog.contactId]" >{{dialog.contactName}}</a></h6>
+       <h6> {{dialog.lastMessage}}</h6>
+       </div>      
+       <div class="col sm-2 date">
+       <h6 > {{dialog.date}}</h6>
+     
+      </div>
+  </div>   
+</ul>
+</div>
+</div>
+</div> 

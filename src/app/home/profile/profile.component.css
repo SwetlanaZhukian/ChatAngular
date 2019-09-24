@@ -1,0 +1,40 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    padding: 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 0; 
+  }
+
+  h2{
+    text-align:center;
+    margin-top: 20px
+  }
+  .profile{
+      width: 80%;
+  }
+  .col-md-7{
+      background-color: white;
+      padding: 0%;
+  }
+  .col-sm-10
+  {
+      word-break: break-all;
+  }

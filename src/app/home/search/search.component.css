@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+    list-style: none;
+    align-content:center;
+  }
+  
+  .container>.item {
+    padding: 20px;
+    background-color: rgb(194, 232, 255);
+    align-content:center;
+    word-wrap:break-word;
+  }
+  img {
+    object-fit: cover;
+    border-radius:50%;
+    width: 100px;
+    height: 100px;
+   align-self: center
+  }
+  .container{
+    padding-top: 50px;
+    padding-left: 0;
+    text-align: center;
+}
+
+ .result{
+   margin-bottom: 20px;
+ }
