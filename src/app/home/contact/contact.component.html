@@ -1,7 +1,10 @@
 
    <div class="result">
+      <h2 class="r" align="center" *ngIf=!b  > The contacts list is empty.</h2>
   <div class="cont-contact" >
- <div *ngFor="let contact of contacts" class="item" >
+ <div *ngFor="let contact of contacts| paginate: config" class="item" >
+    <span class="time_online" *ngIf="!contact.isOnline">Was online {{contact.lastTimeOnline}}</span>
+    <span class="time_online" *ngIf="contact.isOnline">Online</span> 
   <ul class="list-group"> 
      <div class="row">
             <div class="col-sm-4">
@@ -14,21 +17,24 @@
             </div>
           <div class="col-sm-4">
               <div class="row buttons " >
-                  <div class="col-sm-2">
-                      <button (click)="Delete(contact.userId)" class="btn btn-danger"  ><i class="fa fa-close"></i></button> 
+                  <div class="col-sm-3">
+                      <button title="Remove from contacts" (click)="Delete(contact.userId)" class="btn btn-danger"  ><i class="fa fa-close"></i></button> 
                   </div> 
-                  <div class="col-sm-2">
-                          <button [routerLink]="['/home/dialog',contact.userId]" class="btn btn-warning" ><i class=" fa fa-comments-o"></i></button>   
+                  <div class="col-sm-3">
+                          <button title="Send message" [routerLink]="['/home/dialog',contact.userId]" class="btn btn-warning" ><i class=" fa fa-comments-o"></i></button>   
                         </div> 
-                  <div class="col-sm-2">
-                    <button (click)="AddInBlock(contact.userId)" class="btn btn-secondary" *ngIf=!contact.status ><i class="fa fa-lock"></i></button> 
+                  <div class="col-sm-3">
+                    <button title ="Add to blacklist"  (click)="AddInBlock(contact.userId)" class="btn btn-secondary" *ngIf=!contact.status ><i class="fa fa-lock"></i></button> 
                     <button (click)="DeleteFromBlock(contact.userId)" class="btn btn-light" *ngIf=contact.status ><i class="fa fa-unlock"></i></button>     
-                  </div>   
+                  </div>  
               </div>     
-       
+             
     </div>
-  </div>   
+    
+  </div> 
+  
 </ul>
 </div>
 </div>
+<pagination-controls *ngIf=b class="my-pagination"  (pageChange)="pageChanged($event)"></pagination-controls>
 </div> 

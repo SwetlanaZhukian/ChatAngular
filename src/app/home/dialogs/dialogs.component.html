@@ -1,21 +1,88 @@
 <div class="result">
+    <h2 class ="r" align="center" *ngIf=!b  > The message list is empty.</h2>
   <div class="cont-contact" >
- <div *ngFor="let dialog of  dialogs" class="item" [routerLink]="['/home/dialog',dialog.contactId]" >
+  
+      
+ <div  *ngFor="let dialog of  dialogs| paginate: config" class="item"   >
+  <span class="time_online" *ngIf="!dialog.isOnline">Was online {{dialog.lastTimeOnline}}</span>
+    <span class="time_online" *ngIf="dialog.isOnline">Online</span> 
   <ul class="list-group"> 
      <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4" >
     <img [src]="ImgPath(dialog.avatar)" />
      </div>
-       <div class="col sm-4 " >
+       <div class="col sm-4" [routerLink]="['/home/dialog',dialog.contactId]" >
        <h6 ><a class="name" [routerLink]="['/home/contactprofile',dialog.contactId]" >{{dialog.contactName}}</a></h6>
        <h6> {{dialog.lastMessage}}</h6>
        </div>      
-       <div class="col sm-2 date">
+       <div class="col sm-2 date" [routerLink]="['/home/dialog',dialog.contactId]">
        <h6 > {{dialog.date}}</h6>
-     
+       
       </div>
-  </div>   
+      <div class="col sm-2 y">
+      <button  title ="Delete dialog"  (click)="DeleteDialog(dialog.contactId)"  class="btn btn-danger"><i class="fa fa-close"></i></button>  
+    </div>
+   
+     
+  </div> 
+  
 </ul>
 </div>
+
+     
+
 </div>
+
+<pagination-controls *ngIf=b class="my-pagination"  (pageChange)="pageChanged($event)"></pagination-controls>
 </div> 
+
+ <!-- <div class="container">
+   <h2 class ="r" align="center" *ngIf=!b  > The message list is empty.</h2>
+    <nav>
+        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-contacts-tab" data-toggle="tab" href="#nav-contacts" role="tab"
+                aria-controls="nav-contacts" aria-selected="true">List of messages</a>
+        </div>
+    </nav>
+    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-contacts" role="tabpanel" aria-labelledby="nav-contacts-tab">
+            <div *ngFor="let dialog of dialogs | paginate: config" class="example-item">
+
+                <div class="row contact">
+                    <span class="time_online" *ngIf="!dialog.isOnline">Was online {{dialog.lastTimeOnline}}</span>
+                    <span class="time_online" *ngIf="dialog.isOnline">Online</span> 
+                    <div class="col-sm-10" [routerLink]="['/home/dialog',dialog.contactId]">
+                        
+                            <ul class="list-group">
+                                <div class="row">
+                            <div class="col-sm-4">
+                                <img [src]="ImgPath(dialog.avatar)">
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 ><a class="name" [routerLink]="['/home/contactprofile',dialog.contactId]" >{{dialog.contactName}}</a></h6>
+                              
+                                   
+                                        <h6>{{dialog.lastMessage}} </h6>
+                                      </div>
+                                    <div class="col sm-6 date">
+                                      <h6 > {{dialog.date}}</h6>
+                                </div>
+                            
+                        
+                           
+                    </div>
+                  </ul>
+                   
+
+                    
+                </div>
+
+                <div class="col-sm-2 y" >
+                    <i   class="fa fa-times fa-2x" (click)="DeleteDialog(dialog.contactId)"> </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <pagination-controls *ngIf=b class="my-pagination"  (pageChange)="pageChanged($event)"></pagination-controls>
+</div> -->

@@ -1,8 +1,13 @@
 <!-- <img src="/assets/img/123.jpg" class="css-adaptive"> -->
+<style> 
+input::placeholder {
+  color:rgba(255, 255, 255, 0.486);
+}
+</style>
 <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
   <div class="form-group">
     <label>Login</label>
-    <input class="form-control" #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" required>
+    <input class="form-control" #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" required  placeholder="Email or phone (XX)XXX-XX-XX">
   </div>
   <div class="form-group">
     <label>Password</label>

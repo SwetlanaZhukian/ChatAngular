@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-2">
             <a [routerLink]="['/home/profile/edit']" class="btn btn-default" data-toggle="button" role="button">
-              <i class="fas fa-edit"></i></a>
+              <i title="Edit" class="fas fa-edit"></i></a>
           </div>
         </div>
       </li>
@@ -24,6 +24,6 @@
   </div>
 </div>
   <div class="row ">
-    <div class="col-md-5">
+    <div class="col-sm-3">
         <app-upload>(onUploadFinished)="uploadFinished($event)"</app-upload>
   </div>  

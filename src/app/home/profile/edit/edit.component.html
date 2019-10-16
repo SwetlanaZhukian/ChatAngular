@@ -2,7 +2,7 @@
 <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="saveUserName(form)"  >
   <div class="form-group">
     <label>Name</label>
-    <input class="form-control" #Name="ngModel" name="Name" [(ngModel)]="editModel.Name" required>
+    <input class="form-control" #Name="ngModel" name="Name" [(ngModel)]="editModel.Name" maxLength="50" required>
   </div>
   <div class="form-row" >
     <div class="form-group col-md-6">

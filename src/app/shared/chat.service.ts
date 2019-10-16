@@ -20,6 +20,11 @@ export class ChatService {
   {
     return this.http.get(this.BaseURI+'/chat/'+id);
   }
+  deleteD(id):Observable<any>
+  {
+    return this.http.delete(this.BaseURI+'/chat/'+id);
+    
+  }
   // send(formData)
   //   {
   //     return this.http.put(this.BaseURI+'/chathub',formData)

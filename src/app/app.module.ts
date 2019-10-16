@@ -26,7 +26,11 @@ import { ChatComponent } from './chat/chat.component';
 import { DialogComponent } from './home/dialog/dialog.component';
 import { DialogsComponent } from './home/dialogs/dialogs.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { PickerModule } from '@ctrl/ngx-emoji-mart'
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { PaginationComponent } from './home/pagination/pagination.component'
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 
 
@@ -48,6 +52,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart'
     ChatComponent,
     DialogComponent,
     DialogsComponent,
+    PaginationComponent,
+ 
    
 
   ],
@@ -61,7 +67,9 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart'
     ToastrModule.forRoot(),
     FormsModule,
     NgxDropzoneModule,
-    PickerModule
+    PickerModule,
+    NgxPaginationModule
+
 
 
   ],
@@ -69,7 +77,9 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart'
     provide:HTTP_INTERCEPTORS, 
     useClass:AuthInterceptor,
     multi:true
-  }],
+  }
+  
+],
  
   bootstrap: [AppComponent]
 })

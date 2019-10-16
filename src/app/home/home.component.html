@@ -1,8 +1,24 @@
-  <nav class="navbar navbar-dark"style="background-color:#0a0a0a ;">
-  <a  class="navbar-brand nav-link" class="font-familychat" href="/home" >Chat</a>
+ 
+ <style> 
+    input::placeholder {
+      color:rgba(255, 255, 255, 0.486);
+    }
+      img {
+    object-fit: cover;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+    align-self: center
+
+    }
+    </style>
+    <nav class="navbar navbar-dark"style="background-color:#0a0a0a ;">
+  <a  class="navbar-brand nav-link" class="font-familychat" href="/home" >GoodDayChat</a>
+  
   <!-- <ul class="navbar-nav mr-auto ">
   <a  class="nav-link" href="/home/profile">Profile</a>
 </ul> -->
+
 <ul class="navbar-nav mx-auto ">
   <form class="form-inline my-2 my-lg-0 ">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchQuery" [(ngModel)]="searchQuery" aria-label="Search">
@@ -18,7 +34,7 @@
       <h3>Menu</h3>
       <ul>
         <li><a [routerLink]="['/home/profile']">Profile</a> </li>
-        <li><a [routerLink]="['/home/dialogs']">Messages</a></li>
+        <li><a [routerLink]="['/home/dialogs']">Messages</a> </li>  
         <li><a [routerLink]="['/home/contact']">Contacts</a></li>
         <li><a [routerLink]="['/home/blacklist']">Black List</a></li>
       </ul>

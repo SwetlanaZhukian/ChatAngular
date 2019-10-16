@@ -1,6 +1,6 @@
 
 
-  <h2>Contact Profile Card</h2>
+  <h2>User Profile Card</h2>
 <div class="card" *ngIf="contactProfile">
   <img *ngIf="contactProfile" [src]="ImgPath(contactProfile.avatar)" style="width:100%">
   <div >
@@ -11,15 +11,15 @@
     </ul>
     <div class="row">
         <div class="col-sm-4">
-            <button (click)="Add(contactProfile.id)" class="btn btn-success" *ngIf=!contactProfile.userInContact [disabled]="contactProfile.status" ><i class="fa fa-plus"></i></button>  
-            <button (click)="Delete(contactProfile.id)" class="btn btn-danger" *ngIf=contactProfile.userInContact ><i class="fa fa-close"></i></button>     
+            <button  title="Add to contacts" (click)="Add(contactProfile.id)" class="btn btn-success" *ngIf=!contactProfile.userInContact [disabled]="contactProfile.status" ><i class="fa fa-plus"></i></button>  
+            <button  title="Remove from contacts" (click)="Delete(contactProfile.id)" class="btn btn-danger" *ngIf=contactProfile.userInContact ><i class="fa fa-close"></i></button>     
         </div> 
         <div class="col-sm-3">
-                <button [routerLink]="['/home/dialog',contactProfile.id]" [disabled]="contactProfile.status"  class="btn btn-warning" ><i class=" fa fa-comments-o"></i></button>   
+                <button title="Send message"  [routerLink]="['/home/dialog',contactProfile.id]" [disabled]="contactProfile.status"  class="btn btn-warning" ><i class=" fa fa-comments-o"></i></button>   
               </div> 
         <div class="col-sm-4">
-          <button (click)="AddInBlock(contactProfile.id)" class="btn btn-secondary" *ngIf=!contactProfile.status ><i class="fa fa-lock"></i></button> 
-          <button (click)="DeleteFromBlock(contactProfile.id)" class="btn btn-light" *ngIf=contactProfile.status ><i class="fa fa-unlock"></i></button>  
+          <button title ="Add to blacklist" (click)="AddInBlock(contactProfile.id)" class="btn btn-secondary" *ngIf=!contactProfile.status ><i class="fa fa-lock"></i></button> 
+          <button title ="Remove from blacklist" (click)="DeleteFromBlock(contactProfile.id)" class="btn btn-light" *ngIf=contactProfile.status ><i class="fa fa-unlock"></i></button>  
         </div>   
     </div>   
     <!-- <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="save(form)"  >

@@ -25,7 +25,7 @@ onSubmit(form:NgForm)
   this.servise.login(form.value).subscribe(
     (res:any)=>{
       localStorage.setItem('token',res.token);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/home/profile');
     },
     err=>{
       if(err.status==400)

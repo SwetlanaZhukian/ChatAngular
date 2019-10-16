@@ -31,3 +31,14 @@
  .result{
    margin-bottom: 20px;
  }
+ .my-pagination /deep/ .ngx-pagination .current {
+  margin: 20px;
+  background: black;
+}
+.time_online{
+	color:white;
+	display: block;
+  font-size: 14px;
+  text-align: right;
+  margin-bottom: 10px;
+}

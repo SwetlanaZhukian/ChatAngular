@@ -65,7 +65,9 @@ export class UserService {
   delete(id):Observable<any>
   {
     return this.http.delete(this.BaseURI+'/contact/'+id);
+    
   }
+  
   getContactProfile(id)
   {
     return this.http.get(this.BaseURI+'/contact/profile/'+id);
@@ -88,5 +90,9 @@ export class UserService {
   saveNickName(id,formData)
   {
     return this.http.put(this.BaseURI+'/contact/'+id,formData);
+  }
+  disconnect():Observable<any>{
+    let tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
+    return this.http.get(this.BaseURI+'/account/disconnect',{headers : tokenHeader});
   }
   }

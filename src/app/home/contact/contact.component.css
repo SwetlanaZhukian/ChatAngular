@@ -3,14 +3,15 @@
     grid-template-rows: 200;
     grid-row-gap: 20px;
  grid-column-gap: 40px; 
-    width: 85%;
-    margin: 0 auto;
+    width: 70%;
+    margin-left: 60px;
     list-style: none;
     align-content:center;
   }
   
   .cont-contact>.item {
     padding: 20px;
+    padding-top: 0px;
     background-color:white;
     align-content:center;
     word-wrap:break-word;
@@ -33,9 +34,28 @@
 
 .result{
     margin-bottom: 50px;
+    margin-left: 90px;
+ 
   } 
   .buttons{
     margin-top: 30px;
   }
+  .my-pagination /deep/ .ngx-pagination .current {
+    margin: 20px;
+   background:white;
+     color: black;
+  }
+     .time_online{
+      color:black;
+      display: block;
+      font-size: 14px;
+      text-align: right;
+      margin-bottom: 10px;
+     
+     }
+     .r{
+      padding-top: 50px;
+        }
+     
    
    

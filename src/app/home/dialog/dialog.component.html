@@ -1,6 +1,22 @@
- <div class="container">
-  <div class="dialog">
+ 
+
+  <div class="container">
+    <div *ngIf="dialog" class="row">
+        
+         <div class="col col-sm-3 ">
+          <img class="dialog-header-img" src="https://localhost:44370//{{dialog.avatar}}">
+        </div>
+        <!-- <div class="col col-sm-3">
+          </div>  -->
+        <div class="col col-sm-6 text-center ">
+            
+          <h6><a class="name" [routerLink]="['/home/contactprofile',dialog.contactId]" >{{dialog.contactName}}</a></h6>
+        </div>
+        
+      </div>
+  <div id="scroll" class="dialog">
     <div class="messages-box">
+      
       <div>
         <div *ngFor="let message of dialog?.messages">
           <div class="col">
@@ -124,40 +140,222 @@
           </div> 
     </div>
   </div>
- 
-  <div class="message-input" *ngIf = "!dialog?.inBlock">
-    <div class="wrap row">
-      <div class="col-sm-1">
-      <button  class="attachment">
-      <i class="fa  fa-smile-o fa-2x"
-      (click)="toggleEmojiPicker()"></i>
-      <emoji-mart title="Pick your emoji…" emoji="point_up"  (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"  [style]="{ position: 'absolute', bottom: '20px', right: '20px' }" [i18n]="{ search: 'Recherche', categories: { search: 'Résultats de recherche', recent: 'Récents' } }"></emoji-mart>
-    </button>
+
+
+
+  <div  class="message-input" *ngIf = "dialog?.inBlock">
+      <h4 class="blocked_under text-center">User has restricted your access to his/her messages.</h4>
   </div>
   
-      <div class="col-sm-10">
-        <textarea  name="message" [(ngModel)]="message" ></textarea>
+  <div class="message-input" *ngIf = "!dialog?.inBlock">
+    <div class="wrap row">
+    
+      <div class="input-group">
+        <textarea class="input" id='output'  name="message" [(ngModel)]="message" ></textarea>
+       
+            <button class="input-addon"   (click)="chat(); dropzone.reset(); inputReset(); "><i class="fa fa-paper-plane fa-2x"></i></button>
+               
+                    <button  class="input-attachment">
+                    <i class="fa  fa-smile-o fa-2x"
+                    (click)="toggleEmojiPicker()"></i>
+                    <emoji-mart title="Pick your emoji…" emoji="point_up"  (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker"  [style]="{ position: 'absolute', bottom: '20px', right: '20px' }" [i18n]="{ search: 'Recherche', categories: { search: 'Résultats de recherche', recent: 'Récents' } }"></emoji-mart>
+                  </button>
       </div>
-      <div class="col col-sm-1">
-          <button class="btn btn-primary btn-send" (click)="chat(); dropzone.reset();"><i class="fa fa-paper-plane fa-2x"
-              aria-hidden="true"></i></button>
-        </div>
-      <!-- <div class="col-sm-1"><button class="send" ><i class="fa fa-check-square-o fa-2x" (click)="chat()" ></i></button></div> -->
-    </div>
-    <ngx-dropzone class="custom-dropzone" [showPreviews]="true" (filesAdded)="onFilesAdded($event)"
+     
+    <ngx-dropzone class="custom-dropzone"  [showPreviews]="true" (filesAdded)="onFilesAdded($event)"
     (filesRejected)="onFilesRejected($event)" #dropzone></ngx-dropzone>
   </div>
 
 </div>
 
-<div  class="message-input" *ngIf = "dialog?.inBlock">
-    <div class="wrap row">
-        <div class="col-sm-10">
-        <h6 class ="message">Blocked</h6>
+
+
+<!-- <div class="container">
+    <div *ngIf="dialog" class="row">
+      <div class="col col-sm-1">
+      </div>
+      <div class="col col-sm-1 text-center">
+        <img class="dialog-header-img" src="https://localhost:44370//{{dialog.avatar}}">
+      </div>
+      <div class="col col-sm-6">
+        <h3>{{dialog.contactName}}</h3>
+      </div>
+    </div>
+    <div class="dialog">
+      <div class="messages-box">
+        <div>
+          <div *ngIf = "dialog">
+          <div *ngFor="let message of dialog?.messages">
+            <div class="incoming_msg" *ngIf="message.userId == dialog.userId">
+              <div class="incoming_msg_img"> <img src="https://localhost:44370//{{message?.userImage}}"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <div class="received_message">
+                    
+                      <p class="dark-msg">{{message?.content}}</p>
+                      
+                      <ng-container *ngFor="let file of message.filePaths">
+                        <div [ngSwitch]="file.extension">
+                          <div *ngSwitchCase="'.jpg'">
+                            <img (click)="ShowFile()" class="img-message" src="https://localhost:44370//{{file.filesPath}}">
+                          </div>
+                          <div *ngSwitchCase="'.mp3'">
+                            <audio controls>
+                              <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                            </audio>
+                          </div>
+                          <div *ngSwitchCase="'.mp4'">
+                            <video controls>
+                              <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                            </video>
+                          </div>
+                        </div>
+                      </ng-container>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+         
+                  <span class="time_date">{{message.name}} in {{message.date}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg" *ngIf="message.userId != dialog.userId">
+              <div class="sent_msg">
+                <div class="outgoing_message">
+                 
+                    <p class="light-msg">{{message?.messageText}}</p>
+                    
+                    <ng-container *ngFor="let file of message.filePaths">
+                      <div [ngSwitch]="file.extension">
+                        <div *ngSwitchCase="'.jpg'">
+                          <img class="img-message" src="https://localhost:44370//{{file.filesPath}}">
+                        </div>
+                        <div *ngSwitchCase="'.mp3'">
+                          <audio controls>
+                            <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                          </audio>
+                        </div>
+                        <div *ngSwitchCase="'.mp4'">
+                          <video controls>
+                            <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                          </video>
+                        </div>
+                      </div>
+                    </ng-container>
+               
+                  
+                </div>
+                <span class="time_date">{{message.name}} in {{message.date}}</span>
+              </div>
+            </div>
+          </div>
         </div>
- </div>
-</div>
 
-
-
+        <div *ngIf = "!dialog">
+           <p>Write first message to start dialog!</p>
+        </div>
+  
+       
+        <hr>
+        <div>
+          <div *ngFor="let messageNow of messages">
+            <div class="incoming_msg" *ngIf="messageNow.user === 'contact'">
+              <div class="incoming_msg_img"> <img src="https://localhost:44370//{{messageNow?.mess.userImage}}"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <div class="received_message">
+                 
+                      <p class="dark-msg">{{messageNow.mess?.content}}</p>
+                      
+                      <ng-container *ngFor="let file of messageNow.mess.filePaths">
+                        <div [ngSwitch]="file.extension">
+                          <div *ngSwitchCase="'.jpg'">
+                            <img class="img-message" src="https://localhost:44370//{{file.filesPath}}">
+                          </div>
+                          <div *ngSwitchCase="'.mp3'">
+                            <audio controls>
+                              <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                            </audio>
+                          </div>
+                          <div *ngSwitchCase="'.mp4'">
+                            <video controls>
+                              <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                            </video>
+                          </div>
+                        </div>
+                      </ng-container>
+                  
+                   
+                  </div>
+                  <span class="time_date">{{messageNow.mess.name}} in {{messageNow.mess.date}} </span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg" *ngIf="messageNow.user === 'user'">
+              <div class="sent_msg">
+                <div class="outgoing_message">
+                 
+                    <p class="light-msg">{{messageNow.mess?.content}}</p>
+                   
+                    <ng-container *ngFor="let file of messageNow.mess.filePaths">
+                      <div [ngSwitch]="file.extension">
+                        <div *ngSwitchCase="'.jpg'">
+                          <img class="img-message" src="https://localhost:44370//{{file.filesPath}}">
+                        </div>
+                        <div *ngSwitchCase="'.mp3'">
+                          <audio controls>
+                            <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                          </audio>
+                        </div>
+                        <div *ngSwitchCase="'.mp4'">
+                          <video controls>
+                            <source src="https://localhost:44370//{{file.filesPath}}" type="audio/mpeg">
+                          </video>
+                        </div>
+                      </div>
+                    </ng-container>
+                 
+                 
+                </div>
+                <span class="time_date">{{messageNow.mess.name}} in {{messageNow.mess.date}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="message-input" *ngIf="dialog?.inBlock">
+      <h4 class="blocked_under text-center">User has restricted your access to his/her messages.</h4>
+    </div> 
+    
+       
+    <div class="message-input" *ngIf="!dialog?.inBlock">
+      
+      <div class="wrap row">
+        <div class="col col-sm-1">
+          <button class="btn btn-primary" (click)="share()">Share</button>
+          <button class="btn btn-primary" (click)="resend()">Resend</button>
+        </div>
+        <div class="col col-sm-10 row" >
+           <div class=" col col-sm-11">
+             <textarea id='output' name="message" [(ngModel)]="message" #textarea></textarea>   
+           </div>
+          <div class="col col-sm-1">
+              <img src="assets/img/smile.png" style="width:90%" (click)="onVisible()">
+          </div>
+        </div>
+        <div class="col col-sm-1">
+          <button class="btn btn-primary btn-send" (click)="chat(); dropzone.reset(); inputReset()"><i class="fa fa-paper-plane fa-2x"
+              aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <ngx-dropzone class="custom-dropzone" [showPreviews]="true" (filesAdded)="onFilesAdded($event)"
+        (filesRejected)="onFilesRejected($event)" #dropzone></ngx-dropzone>
+       <div *ngIf = "visible">
+   <emoji-mart title="Pick your emoji…" emoji="point_up" set="emojione" (emojiClick)="addEmoji($event)" [style]="{ position: 'absolute', bottom: '200px', right: '20px' }" [i18n]="{ search: 'Recherche', categories: { search: 'Résultats de recherche', recent: 'Récents' } }"></emoji-mart>
+        </div>
+    </div>
  
+   -->

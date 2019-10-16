@@ -1,6 +1,9 @@
 <div class="result">
+    <h2  class ="r" align="center" *ngIf=!b  > The black list is empty.</h2>
     <div class="cont-black" >
-   <div *ngFor="let user of usersInBlock" class="item" >
+   <div *ngFor="let user of usersInBlock | paginate: config" class="item" >
+      <span class="time_online" *ngIf="!user.isOnline">Was online {{user.lastTimeOnline}}</span>
+      <span class="time_online" *ngIf="user.isOnline">Online</span> 
     <ul class="list-group"> 
        <div class="row ">
               <div class="col-sm-4">
@@ -12,11 +15,12 @@
           <h6 style="color:rgb(250, 250, 250)"><i class="fa fa-envelope-o"></i> Email: {{user.email}}</h6>
            </div>  
             <div class="col-sm-4 buttons">
-        <button (click)="DeleteFromBlackList(user.userId)" class="btn btn-light btn-lg"><i class="fa fa-unlock"></i></button>  
+        <button title ="Remove from blacklist" (click)="DeleteFromBlackList(user.userId)" class="btn btn-light btn-lg"><i class="fa fa-unlock"></i></button>  
       </div>
     </div>  
   </ul>
   </div>
   </div>
+  <pagination-controls *ngIf=b class="my-pagination"  (pageChange)="pageChanged($event)"></pagination-controls>
   </div> 
   

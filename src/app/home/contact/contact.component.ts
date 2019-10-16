@@ -9,20 +9,40 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ContactComponent implements OnInit {
   contacts: any[];
-  constructor(private service:UserService,private toastr:ToastrService) { }
+  config: any;
+  b:boolean=false;
+  constructor(private service:UserService,private toastr:ToastrService) { 
+    this.config = {
+      itemsPerPage: 4,
+      currentPage: 1,
+      //totalItems: this.users.count
+    };
+  }
 
   ngOnInit() {
     this.service.getContacts().subscribe(
       (res:any) => {
       this.contacts = res;
         console.log(this.contacts);
+        if (this.contacts.length>0)
+        {
+          this.b=true;
+        }
+        else{
+          this.b=false;
+        }
     },
     err => {
       console.log(err);
+
   });
+this.b=false;
   }
   public ImgPath = (serverPath: string) => {
     return `https://localhost:44370/${serverPath}`;
+  }
+  pageChanged(event){
+    this.config.currentPage = event;
   }
  
   Delete(userId)
@@ -30,6 +50,7 @@ export class ContactComponent implements OnInit {
     this.service.delete(userId).subscribe(
       (res:any)=>{ 
         this.ngOnInit();
+       
        this.toastr.success("User deleteded from your contacts successfully","Success");
       },
       err => {
